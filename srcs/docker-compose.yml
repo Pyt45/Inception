@@ -9,3 +9,5 @@ services:
 	mariadb:
 	wordpress:
 volumes:
+	mariadb-vlm:
+	wordpress-vlm:
