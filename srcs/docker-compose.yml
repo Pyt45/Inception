@@ -1,8 +1,63 @@
-version: "3.9"  # optional since v1.27.0
+version: "3.4"  # optional since v1.27.0
 services:
   nginx:
     build: ./requirements/nginx/
     ports:
       - "443:443"
-    env_file:
-      - .env
+    networks:
+      - backend
+    depends_on:
+      - wordpress
+    volumes:
+      - wp-data:/www/wordpress
+
+  mariadb:
+    build: ./requirements/mariadb/
+    networks:
+      - backend
+    volumes:
+      - db-data:/var/lib/mysql
+
+  wordpress:
+    build: ./requirements/wordpress/
+    networks:
+      - backend
+    depends_on:
+      - mariadb
+    volumes:
+      - wp-data:/www/wordpress
+  adminer:
+    build: ./requirements/bonus/adminer
+    ports:
+      - "5000:5000"
+    networks:
+      - backend
+  redis:
+    build: ./requirements/bonus/redis
+    networks:
+      - backend
+  ftp:
+    build: ./requirements/bonus/ftp
+    ports:
+      - "21:21"
+      - "21000:21000"
+    networks:
+      - backend
+
+volumes:
+  db-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/ayoub/Desktop/data/db-data
+  wp-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/ayoub/Desktop/data/wp-data
+
+networks:
+  backend:
+    driver: bridge
