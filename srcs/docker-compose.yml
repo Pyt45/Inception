@@ -1,13 +1,8 @@
-version: "3.9"
+version: "3.9"  # optional since v1.27.0
 services:
-	nginx:
-		build: ./requirements/nginx
-		ports:
-			- "443:443"
-		env_file:
-			- .env
-	mariadb:
-	wordpress:
-volumes:
-	mariadb-vlm:
-	wordpress-vlm:
+  nginx:
+    build: ./requirements/nginx/
+    ports:
+      - "443:443"
+    env_file:
+      - .env
