@@ -17,6 +17,8 @@ services:
       - backend
     volumes:
       - db-data:/var/lib/mysql
+    env_file:
+      - .env
 
   wordpress:
     build: ./requirements/wordpress/
@@ -24,8 +26,12 @@ services:
       - backend
     depends_on:
       - mariadb
+      - redis
     volumes:
       - wp-data:/www/wordpress
+    env_file:
+      - .env
+
   adminer:
     build: ./requirements/bonus/adminer
     ports:
@@ -43,6 +49,8 @@ services:
       - "21000:21000"
     networks:
       - backend
+        #volumes:
+        #- wp-data:/home
 
 volumes:
   db-data:
@@ -50,13 +58,13 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/ayoub/Desktop/data/db-data
+      device: /home/aaqlzim/Desktop/data/db-data
   wp-data:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/ayoub/Desktop/data/wp-data
+      device: /home/aaqlzim/Desktop/data/wp-data
 
 networks:
   backend:

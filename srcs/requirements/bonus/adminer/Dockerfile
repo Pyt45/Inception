@@ -12,6 +12,7 @@ RUN apk add php7-gd php7-mysqli php7-zlib php7-curl
 RUN apk add php
 RUN apk add wget
 
-RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-mysql-en.php
+RUN wget https://github.com/vrana/adminer/releases/download/v4.8.1/adminer-4.8.1-en.php
+RUN mv adminer-4.8.1-en.php index.php
 
-CMD php adminer-4.8.1-mysql-en.php
+CMD php -S 0.0.0.0:5000

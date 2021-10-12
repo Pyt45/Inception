@@ -18,12 +18,12 @@ RUN yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout \
 RUN rm /etc/nginx/nginx.conf
 COPY ./conf/nginx.conf /etc/nginx/
 #RUN rc-service nginx start
-COPY ./tools/index.html /www/
+#COPY ./tools/index.html /www/
 
 COPY ./tools/entry.sh .
 RUN chmod +x entry.sh
 
-EXPOSE 80
+#EXPOSE 80
 EXPOSE 443
 
 ENTRYPOINT sh ./entry.sh
