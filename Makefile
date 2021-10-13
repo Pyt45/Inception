@@ -8,3 +8,4 @@ up:
 
 down:
 	cd srcs && docker-compose down
+
