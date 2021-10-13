@@ -64,32 +64,19 @@ services:
       - "9000:9000"
     networks:
       - backend
-  backup:
-    build: ./requirements/bonus/backup
-    image: backup
-    volumes:
-      - backup-data:/backup
-    networks:
-      - backend
 volumes:
   db-data:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/aaqlzim/data/db-data
+      device: /home/aaqlzim/Desktop/data/db-data
   wp-data:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/aaqlzim/data/wp-data
-  backup-data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /home/aaqlzim/data/backup
+      device: /home/aaqlzim/Desktop/data/wp-data
 networks:
   backend:
     driver: bridge
