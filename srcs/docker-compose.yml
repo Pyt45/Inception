@@ -51,7 +51,12 @@ services:
       - backend
         #volumes:
         #- wp-data:/home
-
+  nodejs:
+    build: ./requirements/bonus/nodejs
+    ports:
+      - "9000:9000"
+    networks:
+      - backend
 volumes:
   db-data:
     driver: local

@@ -8,8 +8,8 @@ if [ ! -f "/var/lib/mysql/ib_buffer_pool" ]; then
     echo "GRANT ALL PRIVILEGES ON * . * TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'" | mysql -u root
     echo "FLUSH PRIVILEGES" | mysql -u root
     echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" | mysql -u root
-    #echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '123321'" | mysql -u root
     echo "FLUSH PRIVILEGES;" | mysql -u root
+    mysql --user="root" --database="wordpress" --password="${MYSQL_ROOT_PASSWORD}" < /wordpress.sql
 fi
 # sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/mysql/my.cnf
 # sed -i "s|.*bind-address\s*=.*|bind-address=0.0.0.0|g" /etc/my.cnf.d/mariadb-server.cnf

@@ -32,10 +32,10 @@ define( 'WP_REDIS_DATABASE', 0 );
 define( 'DB_NAME', 'wordpress' );
 
 /** MySQL database username */
-define( 'DB_USER', 'admin' );
+define( 'DB_USER', '__wp_user__' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'admin' );
+define( 'DB_PASSWORD', '__wp_password__' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'mariadb' );
