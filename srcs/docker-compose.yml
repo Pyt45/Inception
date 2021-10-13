@@ -2,6 +2,7 @@ version: "3.9"  # optional since v1.27.0
 services:
   nginx:
     build: ./requirements/nginx/
+    image: nginx
     ports:
       - "443:443"
     networks:
@@ -13,6 +14,7 @@ services:
 
   mariadb:
     build: ./requirements/mariadb/
+    image: mariadb
     networks:
       - backend
     volumes:
@@ -22,6 +24,7 @@ services:
 
   wordpress:
     build: ./requirements/wordpress/
+    image: wordpress
     networks:
       - backend
     depends_on:
@@ -34,27 +37,38 @@ services:
 
   adminer:
     build: ./requirements/bonus/adminer
+    image: adminer
     ports:
       - "5000:5000"
     networks:
       - backend
   redis:
     build: ./requirements/bonus/redis
+    image: redis
     networks:
       - backend
   ftp:
     build: ./requirements/bonus/ftp
+    image: ftp
     ports:
       - "21:21"
       - "21000:21000"
     networks:
       - backend
-        #volumes:
-        #- wp-data:/home
+    volumes:
+      - wp-data:/home/user
   nodejs:
     build: ./requirements/bonus/nodejs
+    image: nodejs
     ports:
       - "9000:9000"
+    networks:
+      - backend
+  backup:
+    build: ./requirements/bonus/backup
+    image: backup
+    volumes:
+      - backup-data:/backup
     networks:
       - backend
 volumes:
@@ -63,14 +77,19 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/aaqlzim/Desktop/data/db-data
+      device: /home/aaqlzim/data/db-data
   wp-data:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /home/aaqlzim/Desktop/data/wp-data
-
+      device: /home/aaqlzim/data/wp-data
+  backup-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/aaqlzim/data/backup
 networks:
   backend:
     driver: bridge
