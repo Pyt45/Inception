@@ -27,7 +27,8 @@ RUN sed -i "s/anonymous_enable=YES/anonymous_enable=NO/" /etc/vsftpd/vsftpd.conf
     && echo "pasv_enable=YES" >> /etc/vsftpd/vsftpd.conf \
     && echo "rsa_cert_file=/etc/ssl/private/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf \
     && echo "rsa_private_key_file=/etc/ssl/private/vsftpd.pem" >> /etc/vsftpd/vsftpd.conf \
-    && echo "pasv_address=0.0.0.0" >> /etc/vsftpd/vsftpd.conf \
+    && echo "pasv_addr_resolve=YES"  >> /etc/vsftpd/vsftpd.conf \
+    && echo "pasv_address=aaqlzim.42.fr" >> /etc/vsftpd/vsftpd.conf \
     && echo "pasv_min_port=21000" >> /etc/vsftpd/vsftpd.conf \
     && echo "pasv_max_port=21000" >> /etc/vsftpd/vsftpd.conf
 
