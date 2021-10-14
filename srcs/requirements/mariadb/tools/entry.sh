@@ -3,6 +3,11 @@
 if [ ! -f "/var/lib/mysql/ib_buffer_pool" ]; then
     /etc/init.d/mariadb setup
     rc-service mariadb start
+    echo "CREATE USER '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}'" | mysql -u root
+    echo "CREATE DATABASE wordpress;" | mysql -u root
+    echo "GRANT ALL PRIVILEGES ON * . * TO '${MYSQL_USER}'@'localhost' IDENTIFIED BY '${MYSQL_PASSWORD}'" | mysql -u root
+    echo "FLUSH PRIVILEGES" | mysql -u root
+    echo "--------------------------------"
     echo "CREATE USER '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'" | mysql -u root
     echo "CREATE DATABASE wordpress;" | mysql -u root
     echo "GRANT ALL PRIVILEGES ON * . * TO '${MYSQL_USER}'@'%' IDENTIFIED BY '${MYSQL_PASSWORD}'" | mysql -u root
