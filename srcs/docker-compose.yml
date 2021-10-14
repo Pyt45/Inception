@@ -11,7 +11,7 @@ services:
       - wordpress
     volumes:
       - wp-data:/www/wordpress
-
+    restart: unless-stopped
   mariadb:
     build: ./requirements/mariadb/
     image: mariadb
@@ -21,7 +21,7 @@ services:
       - db-data:/var/lib/mysql
     env_file:
       - .env
-
+    restart: unless-stopped
   wordpress:
     build: ./requirements/wordpress/
     image: wordpress
@@ -34,7 +34,7 @@ services:
       - wp-data:/www/wordpress
     env_file:
       - .env
-
+    restart: unless-stopped
   adminer:
     build: ./requirements/bonus/adminer
     image: adminer
@@ -42,11 +42,13 @@ services:
       - "5000:5000"
     networks:
       - backend
+    restart: unless-stopped
   redis:
     build: ./requirements/bonus/redis
     image: redis
     networks:
       - backend
+    restart: unless-stopped
   ftp:
     build: ./requirements/bonus/ftp
     image: ftp
@@ -57,6 +59,7 @@ services:
       - backend
     volumes:
       - wp-data:/home/user
+    restart: unless-stopped
   nodejs:
     build: ./requirements/bonus/nodejs
     image: nodejs
@@ -64,6 +67,7 @@ services:
       - "9000:9000"
     networks:
       - backend
+    restart: unless-stopped
   backup:
     build: ./requirements/bonus/backup
     image: backup
@@ -72,6 +76,7 @@ services:
     volumes:
       - wp-data:/dbdata
       - bp-data:/backup
+    restart: unless-stopped
 volumes:
   db-data:
     driver: local
