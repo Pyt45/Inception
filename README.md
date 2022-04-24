@@ -10,6 +10,7 @@
 ## Understanding the configuratiuon file
 
 ## Building and running the project
+### will be added soon
 
 1. Download/Clone this repo
 
