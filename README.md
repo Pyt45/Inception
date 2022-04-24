@@ -8,9 +8,9 @@
 ### This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine
 
 ## Understanding the configuratiuon file
+### will be added soon
 
 ## Building and running the project
-### will be added soon
 
 1. Download/Clone this repo
 
