@@ -34,5 +34,5 @@
         https://DOMAIN_NAME:PORT
 
 ## Here is an exmaple diagram of the expected result
-![Alt text](https://https://github.com/Pyt45/Inception/blob/main/result.png)
+![Alt text](https://github.com/Pyt45/Inception/blob/main/result.png)
 [1]: https://github.com/Pyt45/Inception/blob/main/inception.en.subject.pdf
