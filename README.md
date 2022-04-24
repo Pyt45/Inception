@@ -13,7 +13,7 @@
 
 1. Download/Clone this repo
 
-        git clone https://github.com/Pyt45/web-server
+        git clone https://github.com/Pyt45/Inception
 
 2. `cd` into the root direcotry and run `make up` to run the the app or `make detach` to run in foreground mode
 
@@ -34,5 +34,5 @@
         https://DOMAIN_NAME:PORT
 
 ## Here is an exmaple diagram of the expected result
-![Alt text](https://https://github.com/Pyt45/inception/blob/main/result.png)
-[1]: https://github.com/Pyt45/inception/blob/main/inception.en.subject.pdf
+![Alt text](https://https://github.com/Pyt45/Inception/blob/main/result.png)
+[1]: https://github.com/Pyt45/Inception/blob/main/inception.en.subject.pdf
